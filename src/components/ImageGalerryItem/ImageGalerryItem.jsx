@@ -7,13 +7,13 @@ function ImageGalleryItem({ ImgList = [], onOpenModal }) {
     const { id, tags, webformatURL, largeImageURL } = element;
 
     return (
-      <li key={id} className={css.galleryItem}>
+      <li key={id} className={css.ImageGalleryItem}>
         <img
           src={webformatURL}
           name={largeImageURL}
           alt={tags}
           onClick={onOpenModal}
-          className={css.galleryImage}
+          className={css.ImageGalleryItemImage}
         />
       </li>
     );
