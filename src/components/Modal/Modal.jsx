@@ -5,15 +5,15 @@ import { Loading } from 'notiflix/build/notiflix-loading-aio';
 
 export default class Modal extends Component {
   componentDidMount() {
-    window.addEventListener('keydown', this.handleKeyDown);
+    window.addEventListener('keydown', this.closeBtnEscBackdrop);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('keydown', this.handleKeyDown);
+    window.removeEventListener('keydown', this.closeBtnEscBackdrop);
   }
   closeBtnEscBackdrop = ({ target, currentTarget, code }) => {
-    if (code === 'Escape' || target === currentTarget) {
-      this.handleModalClose();
+    if (target === currentTarget || code === 'Escape') {
+      this.props.onCloseModal();
     }
   };
 
@@ -21,13 +21,18 @@ export default class Modal extends Component {
     Loading.hourglass({
       svgColor: 'blue',
     });
-
-    const { src, alt, handleClose } = this.props;
-
+Loading.remove();
     return (
-      <div className={css.Overlay} onClick={handleClose}>
+      <div className={css.Overlay} onClick={this.closeBtnEscBackdrop}>
+        
         <div className={css.Modal}>
-          <img src={src} alt={alt} />
+          <img
+            src={this.props.bigImage}
+            name=""
+            alt=""
+            width="800"
+            height="600"
+          />
         </div>
       </div>
     );
@@ -35,7 +40,7 @@ export default class Modal extends Component {
 }
 
 Modal.propTypes = {
-  src: propTypes.string.isRequired,
+  bigImage: propTypes.string.isRequired,
   alt: propTypes.string.isRequired,
-  handleClose: propTypes.func.isRequired,
+  onCloseModal: propTypes.func.isRequired,
 };
