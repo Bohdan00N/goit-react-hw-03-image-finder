@@ -4,11 +4,11 @@ import css from './button.module.scss';
 
 function Button({ loadNextPage, disabled }) {
   return (
-    <div className={css.block}>
+    <div className={css.box}>
       <button
         onClick={loadNextPage}
         type="button"
-        className={css.upload}
+        className={css.load}
         disabled={disabled}
       >
         Load more
@@ -21,5 +21,5 @@ Button.propTypes = {
   loadNextPage: PropTypes.func.isRequired,
   disabled: PropTypes.bool.isRequired,
 };
-export default Button;
 
+export default Button;

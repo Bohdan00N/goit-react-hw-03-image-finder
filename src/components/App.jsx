@@ -39,7 +39,7 @@ export class App extends Component {
 
         if (response.totalHits > 0) {
           if (nextPage === 1) {
-            Notify.success(`Hooray! We found ${response.totalHits} images.`);
+            Notify.success(`${response.totalHits} images were founded.`);
           }
           this.setState(prevState => ({
             imageList: [...prevState.imageList, ...response.hits],
@@ -53,7 +53,7 @@ export class App extends Component {
         }
         if (response.totalHits === 0) {
           Notify.failure(
-            'Sorry, there are no images matching your search query. Please try again.'
+            'There are no images matching your search query.'
           );
         }
       } catch (error) {
@@ -101,13 +101,13 @@ export class App extends Component {
 
         <ImageGallery>
           <ImageGalleryItem
-            listImages={imageList}
+            ImgList={imageList}
             onOpenModal={this.handleOpenModal}
           />
         </ImageGallery>
         {status === FETCH_STATUS.fullfilled ? (
           <Button
-            fetchNextPage={this.handleLoadMore}
+          loadNextPage={this.handleLoadMore}
             disabled={currentHits === totalHits}
           />
         ) : (

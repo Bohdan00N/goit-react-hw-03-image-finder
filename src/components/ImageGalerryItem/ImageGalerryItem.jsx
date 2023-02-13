@@ -2,8 +2,8 @@ import PropTypes from 'prop-types';
 import css from './imageGalerryItem.module.scss';
 
 
-function ImageGalleryItem({ listImages = [], onOpenModal }) {
-  let elements = listImages.map(element => {
+function ImageGalleryItem({ ImgList = [], onOpenModal }) {
+  let elements = ImgList.map(element => {
     const { id, tags, webformatURL, largeImageURL } = element;
 
     return (
@@ -23,7 +23,7 @@ function ImageGalleryItem({ listImages = [], onOpenModal }) {
 }
 
 ImageGalleryItem.propTypes = {
-  listImages: PropTypes.array.isRequired,
+  ImgList: PropTypes.array.isRequired,
   onOpenModal: PropTypes.func.isRequired,
 };
 
